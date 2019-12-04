@@ -1,0 +1,425 @@
+\hypertarget{core_8c}{}\section{src/core.c File Reference}
+\label{core_8c}\index{src/core.\+c@{src/core.\+c}}
+{\ttfamily \#include $<$kore/kore.\+h$>$}\newline
+{\ttfamily \#include $<$kore/http.\+h$>$}\newline
+{\ttfamily \#include $<$kore/pgsql.\+h$>$}\newline
+{\ttfamily \#include $<$libintl.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}agrlib\+\_\+v2.\+h\char`\"{}}\newline
+Include dependency graph for core.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{core_8c_ab92bb4161a6308b302d283816975c3a6}{\+\_\+}(S\+T\+R\+I\+NG)~gettext(S\+T\+R\+I\+NG)
+\item 
+\#define \hyperlink{core_8c_a5ab5b9aaf3850b085ca39abf901b2751}{T\+E\+S\+T\+\_\+\+C\+A\+SE}
+\begin{DoxyCompactList}\small\item\em Define T\+E\+S\+T\+\_\+\+C\+A\+SE to perfom output to stdout when debuging or testing. \end{DoxyCompactList}\item 
+\#define \hyperlink{core_8c_a22e00999d254cceeb29d2a858b432e41}{\+\_\+}(A)~gettext(A)
+\item 
+\#define \hyperlink{core_8c_a8db4f72cfa2b36aba553c8fd1ab6af9e}{L\+O\+C\+A\+L\+E\+\_\+\+D\+IR}~\char`\"{}locale\char`\"{}
+\begin{DoxyCompactList}\small\item\em For l18n -\/ define here the directory with .mo files. \end{DoxyCompactList}\item 
+\#define \hyperlink{core_8c_aca8570fb706c81df371b7f9bc454ae03}{P\+A\+C\+K\+A\+GE}~\char`\"{}core\char`\"{}
+\begin{DoxyCompactList}\small\item\em Define here the name of file.\+mo to use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{core_8c_a63c2c93fc1421e2956860a788fce8617}{init} (int state)
+\begin{DoxyCompactList}\small\item\em Register database. \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_a6543687223c9eafbac413e52ddd2da7b}{page} (struct http\+\_\+request $\ast$)
+\begin{DoxyCompactList}\small\item\em Dealing with request. \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_a0939e2f18610176aada23a5961ce7ecd}{form\+\_\+response} (struct kore\+\_\+buf $\ast$buf, char $\ast$$\ast$table\+\_\+sorted)
+\begin{DoxyCompactList}\small\item\em Forms html response, but does not send it. Table is formed from \textquotesingle{}table\+\_\+sorted\textquotesingle{}. \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_af8192996f3c522f10ab475ec2b6e6f4a}{form\+\_\+and\+\_\+fire\+\_\+query} (struct kore\+\_\+buf $\ast$qr\+\_\+buf, struct kore\+\_\+pgsql $\ast$sql, char $\ast$line)
+\begin{DoxyCompactList}\small\item\em Responsible for quering database with I\+N\+S\+E\+RT commands. \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_a9f53c2262b7acaa2b5a1e1d2463f14f1}{setup\+\_\+conn} (struct kore\+\_\+pgsql $\ast$sql)
+\begin{DoxyCompactList}\small\item\em Sets up / opens connection with database. \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_ab3444f46f7643490834531d552454bcd}{create\+\_\+table\+\_\+if\+\_\+notexist} (char $\ast$csv\+\_\+header, struct kore\+\_\+pgsql $\ast$sql)
+\begin{DoxyCompactList}\small\item\em Creates table if not exist. \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_a50873f71312e18a4e1eeb8b30c4b755f}{database\+\_\+query} (struct kore\+\_\+pgsql $\ast$sql, char $\ast$$\ast$table\+\_\+sorted)
+\begin{DoxyCompactList}\small\item\em Sets up database connection, performs all queries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{core_8c_a519c8e500ba2ea066c723ee28e30fa04}{html\+\_\+table} \mbox{[}$\,$\mbox{]} = \char`\"{}$<$!D\+O\+C\+T\+Y\+PE html$>$$<$html$>$$<$head$>$$<$meta charset=\textbackslash{}\char`\"{}U\+TF-\/8\textbackslash{}\char`\"{}$>$$<$style$>$table\{font-\/family\+: arial, sans-\/serif;border-\/collapse\+: collapse;width\+: 100\%;\}td, th \{border\+: 1px solid \#dddddd;text-\/align\+: left;padding\+: 8px;\}tr\+:nth-\/child(even) \{background-\/color\+: \#dddddd;\}$<$/style$>$$<$/head$>$$<$body$>$$<$h2$>$\+R\+E\+S\+U\+L\+T\+S$<$/h2$>$$<$table$>$\char`\"{}
+\begin{DoxyCompactList}\small\item\em Tamplate for generated H\+T\+ML table. \end{DoxyCompactList}\item 
+char \hyperlink{core_8c_aba77d446d3c6b20fc708dbaa56669a8d}{error\+\_\+response\+\_\+header} \mbox{[}$\,$\mbox{]} = \char`\"{}$<$!D\+O\+C\+T\+Y\+PE html$>$$<$html$>$$<$head$>$$<$meta charset=\textbackslash{}\char`\"{}utf-\/8\textbackslash{}\char`\"{}$>$$<$/head$>$$<$body$>$L\+O\+G\+:\char`\"{}
+\begin{DoxyCompactList}\small\item\em Tamplate for generated H\+T\+ML error response. \end{DoxyCompactList}\item 
+char \hyperlink{core_8c_a56c55320a85231784cb14d45e6d8043a}{error\+\_\+response\+\_\+end} \mbox{[}$\,$\mbox{]} = \char`\"{}$<$/body$>$$<$/html$>$\char`\"{}
+\item 
+char \hyperlink{core_8c_a88018c0aba001bc30dd2bf70c5098c02}{html\+\_\+table\+\_\+end} \mbox{[}$\,$\mbox{]} = \char`\"{}$<$/table$>$$<$/body$>$$<$/html$>$\char`\"{}
+\begin{DoxyCompactList}\small\item\em End of table. \end{DoxyCompactList}\item 
+char \hyperlink{core_8c_a1bffe9444fb0c41cb785eef0ceb29a8d}{conn\+\_\+str} \mbox{[}$\,$\mbox{]} = \char`\"{}host=localhost dbname=your\+\_\+database\+\_\+name user=example\+\_\+user password=example\char`\"{}
+\begin{DoxyCompactList}\small\item\em Main connection string, fill with your parametrs according to P\+G\+S\+QL connection string rules. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{core_8c_ab013af67ba953d509575c86d9e65da44}{table\+\_\+name}
+\begin{DoxyCompactList}\small\item\em Table name to use if it is not created from file name(\+C\+R\+E\+A\+T\+E\+\_\+\+N\+A\+M\+E\+\_\+\+F\+R\+O\+M\+\_\+\+F\+I\+L\+E not defined) \end{DoxyCompactList}\item 
+char \hyperlink{core_8c_ac6415df1e2eb068fae92d9ec1dab1702}{max\+\_\+entry\+\_\+size} \mbox{[}$\,$\mbox{]} = \char`\"{} varchar(40) \char`\"{}
+\begin{DoxyCompactList}\small\item\em If table is new created, each entry is treated as text(varchar). Here is max size of each entry. \end{DoxyCompactList}\item 
+char \hyperlink{core_8c_a706bc0a919ca845fc1f5c8f58074e924}{ts\+\_\+in\+\_\+db} \mbox{[}$\,$\mbox{]} = \char`\"{} timestamp \char`\"{}
+\begin{DoxyCompactList}\small\item\em This key is used for column with timestamp, if database is created. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{core_8c_a4b2ae53d82dc2d82a6ba3d6488e3638f}{path\+\_\+to\+\_\+csv}
+\item 
+int \hyperlink{core_8c_abc370adb7e2af08ae0ab13964d45d1c4}{max\+\_\+try\+\_\+conn} = 5
+\begin{DoxyCompactList}\small\item\em Holds the number of attempts to do, when trying to access database. \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_a6b9a9c1be87e8344b94882f91f56805b}{escape\+\_\+needed} = 1
+\begin{DoxyCompactList}\small\item\em This flag wraps query in \$\$ for escaping some characters(like quots) \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_ad25499646dfc76b1dfafbe258ea21f19}{form\+\_\+name\+\_\+from\+\_\+path} = 1
+\begin{DoxyCompactList}\small\item\em If no name was suplied to create table with and this flag is up -\/ we will get name from file. \end{DoxyCompactList}\item 
+int \hyperlink{core_8c_a299efd1f0f06729d349e9c000260a4a1}{name\+\_\+len} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{core_8c_ab92bb4161a6308b302d283816975c3a6}\label{core_8c_ab92bb4161a6308b302d283816975c3a6}} 
+\index{core.\+c@{core.\+c}!\+\_\+@{\+\_\+}}
+\index{\+\_\+@{\+\_\+}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+}{\_}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define \+\_\+(\begin{DoxyParamCaption}\item[{}]{S\+T\+R\+I\+NG }\end{DoxyParamCaption})~gettext(S\+T\+R\+I\+NG)}
+
+\begin{DoxyAuthor}{Author}
+Cherniaev Egor 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{core_8c_a22e00999d254cceeb29d2a858b432e41}\label{core_8c_a22e00999d254cceeb29d2a858b432e41}} 
+\index{core.\+c@{core.\+c}!\+\_\+@{\+\_\+}}
+\index{\+\_\+@{\+\_\+}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+}{\_}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define \+\_\+(\begin{DoxyParamCaption}\item[{}]{A }\end{DoxyParamCaption})~gettext(A)}
+
+\begin{DoxyAuthor}{Author}
+Cherniaev Egor 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{core_8c_a8db4f72cfa2b36aba553c8fd1ab6af9e}\label{core_8c_a8db4f72cfa2b36aba553c8fd1ab6af9e}} 
+\index{core.\+c@{core.\+c}!L\+O\+C\+A\+L\+E\+\_\+\+D\+IR@{L\+O\+C\+A\+L\+E\+\_\+\+D\+IR}}
+\index{L\+O\+C\+A\+L\+E\+\_\+\+D\+IR@{L\+O\+C\+A\+L\+E\+\_\+\+D\+IR}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+C\+A\+L\+E\+\_\+\+D\+IR}{LOCALE\_DIR}}
+{\footnotesize\ttfamily \#define L\+O\+C\+A\+L\+E\+\_\+\+D\+IR~\char`\"{}locale\char`\"{}}
+
+
+
+For l18n -\/ define here the directory with .mo files. 
+
+\mbox{\Hypertarget{core_8c_aca8570fb706c81df371b7f9bc454ae03}\label{core_8c_aca8570fb706c81df371b7f9bc454ae03}} 
+\index{core.\+c@{core.\+c}!P\+A\+C\+K\+A\+GE@{P\+A\+C\+K\+A\+GE}}
+\index{P\+A\+C\+K\+A\+GE@{P\+A\+C\+K\+A\+GE}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+C\+K\+A\+GE}{PACKAGE}}
+{\footnotesize\ttfamily \#define P\+A\+C\+K\+A\+GE~\char`\"{}core\char`\"{}}
+
+
+
+Define here the name of file.\+mo to use. 
+
+\mbox{\Hypertarget{core_8c_a5ab5b9aaf3850b085ca39abf901b2751}\label{core_8c_a5ab5b9aaf3850b085ca39abf901b2751}} 
+\index{core.\+c@{core.\+c}!T\+E\+S\+T\+\_\+\+C\+A\+SE@{T\+E\+S\+T\+\_\+\+C\+A\+SE}}
+\index{T\+E\+S\+T\+\_\+\+C\+A\+SE@{T\+E\+S\+T\+\_\+\+C\+A\+SE}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{T\+E\+S\+T\+\_\+\+C\+A\+SE}{TEST\_CASE}}
+{\footnotesize\ttfamily \#define T\+E\+S\+T\+\_\+\+C\+A\+SE}
+
+
+
+Define T\+E\+S\+T\+\_\+\+C\+A\+SE to perfom output to stdout when debuging or testing. 
+
+Library to parse and sort csv by path C\+H\+E\+CK B\+E\+F\+O\+RE U\+SE \+: timestamp\+\_\+col(http\+:ts), path\+\_\+to\+\_\+csv(http\+:pth). F\+OR D\+A\+T\+A\+B\+A\+SE \+: table\+\_\+name(http\+:tbl), max\+\_\+entry\+\_\+size(in code) 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{core_8c_ab3444f46f7643490834531d552454bcd}\label{core_8c_ab3444f46f7643490834531d552454bcd}} 
+\index{core.\+c@{core.\+c}!create\+\_\+table\+\_\+if\+\_\+notexist@{create\+\_\+table\+\_\+if\+\_\+notexist}}
+\index{create\+\_\+table\+\_\+if\+\_\+notexist@{create\+\_\+table\+\_\+if\+\_\+notexist}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{create\+\_\+table\+\_\+if\+\_\+notexist()}{create\_table\_if\_notexist()}}
+{\footnotesize\ttfamily int create\+\_\+table\+\_\+if\+\_\+notexist (\begin{DoxyParamCaption}\item[{char $\ast$}]{csv\+\_\+header,  }\item[{struct kore\+\_\+pgsql $\ast$}]{sql }\end{DoxyParamCaption})}
+
+
+
+Creates table if not exist. 
+
+If table does not exist, we create it This is reached with S\+QL command csv\+\_\+header, csv header to init table with sql, database to use Buffer to hold query
+
+We would like to check if table exists, before creating it
+
+Filling table header in form\+\_\+and\+\_\+fire\+\_\+query fasion
+
+As well we are looking for timestamp column, to indicate it as timestamp
+
+Setting up connection
+
+Performing query \mbox{\Hypertarget{core_8c_a50873f71312e18a4e1eeb8b30c4b755f}\label{core_8c_a50873f71312e18a4e1eeb8b30c4b755f}} 
+\index{core.\+c@{core.\+c}!database\+\_\+query@{database\+\_\+query}}
+\index{database\+\_\+query@{database\+\_\+query}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{database\+\_\+query()}{database\_query()}}
+{\footnotesize\ttfamily int database\+\_\+query (\begin{DoxyParamCaption}\item[{struct kore\+\_\+pgsql $\ast$}]{sql,  }\item[{char $\ast$$\ast$}]{table\+\_\+sorted }\end{DoxyParamCaption})}
+
+
+
+Sets up database connection, performs all queries. 
+
+Open connection
+
+Prepare memory for queries, initialised olny onece
+
+Forming and firing off queries
+
+As we do not include first row (it is a header) \mbox{\Hypertarget{core_8c_af8192996f3c522f10ab475ec2b6e6f4a}\label{core_8c_af8192996f3c522f10ab475ec2b6e6f4a}} 
+\index{core.\+c@{core.\+c}!form\+\_\+and\+\_\+fire\+\_\+query@{form\+\_\+and\+\_\+fire\+\_\+query}}
+\index{form\+\_\+and\+\_\+fire\+\_\+query@{form\+\_\+and\+\_\+fire\+\_\+query}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{form\+\_\+and\+\_\+fire\+\_\+query()}{form\_and\_fire\_query()}}
+{\footnotesize\ttfamily int form\+\_\+and\+\_\+fire\+\_\+query (\begin{DoxyParamCaption}\item[{struct kore\+\_\+buf $\ast$}]{qr\+\_\+buf,  }\item[{struct kore\+\_\+pgsql $\ast$}]{sql,  }\item[{char $\ast$}]{line }\end{DoxyParamCaption})}
+
+
+
+Responsible for quering database with I\+N\+S\+E\+RT commands. 
+
+Each line of csv sent separetly by this function. If escape is needed -\/ this function wraps query with escape characters As input \+: qr\+\_\+buf, extern buffer to temp.\+hold query sql, to post query to line, separated line to fire off Postgres uses dollar sign to escape symbols like \textquotesingle{}, " ... $\ast$\+\_\+e stands for escape, and $\ast$\+\_\+s for simple, with no escape
+
+Holds sizes of query tags, so not to count them each time
+
+Depending on settings we choose tags
+
+Escape sizes differes by only two
+
+Form and send query to previously initialized database Note sizes of command
+
+Due to E\+OL we should down it by 1
+
+Holeds current symbol
+
+Counter for open apostrofs
+
+Counter for close apostrofs
+
+Appending open tags
+
+Appending data
+
+Appending close tag
+
+Appending end tag
+
+Firing off built query
+
+As the buffer is always in use -\/ clean it as soon as we are done \mbox{\Hypertarget{core_8c_a0939e2f18610176aada23a5961ce7ecd}\label{core_8c_a0939e2f18610176aada23a5961ce7ecd}} 
+\index{core.\+c@{core.\+c}!form\+\_\+response@{form\+\_\+response}}
+\index{form\+\_\+response@{form\+\_\+response}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{form\+\_\+response()}{form\_response()}}
+{\footnotesize\ttfamily int form\+\_\+response (\begin{DoxyParamCaption}\item[{struct kore\+\_\+buf $\ast$}]{buf,  }\item[{char $\ast$$\ast$}]{table\+\_\+sorted }\end{DoxyParamCaption})}
+
+
+
+Forms html response, but does not send it. Table is formed from \textquotesingle{}table\+\_\+sorted\textquotesingle{}. 
+
+The table is created and filled with csv data. Some style can be added. First it takes header and then adds each piece od data wraped properly with table tags Then end part is added. Header
+
+Indicates if open tag has been added
+
+Indicates if close tag has been added
+
+Formating each line and append it to buffer
+
+tmp holds pointer to the next sorted line
+
+Create new line
+
+As we have counted maximum line length, we do not need to iterate more
+
+Now we are looking for two things \+: end of line and separators
+
+Rutine for tags
+
+Append data
+
+= \&current\+\_\+char
+
+As we are done with tags -\/ close H\+T\+ML document \mbox{\Hypertarget{core_8c_a63c2c93fc1421e2956860a788fce8617}\label{core_8c_a63c2c93fc1421e2956860a788fce8617}} 
+\index{core.\+c@{core.\+c}!init@{init}}
+\index{init@{init}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily int init (\begin{DoxyParamCaption}\item[{int}]{state }\end{DoxyParamCaption})}
+
+
+
+Register database. 
+
+Register our database
+
+Setting the i18n environment. L18n is done by user\textquotesingle{}s settings \mbox{\Hypertarget{core_8c_a6543687223c9eafbac413e52ddd2da7b}\label{core_8c_a6543687223c9eafbac413e52ddd2da7b}} 
+\index{core.\+c@{core.\+c}!page@{page}}
+\index{page@{page}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{page()}{page()}}
+{\footnotesize\ttfamily int page (\begin{DoxyParamCaption}\item[{struct http\+\_\+request $\ast$}]{req }\end{DoxyParamCaption})}
+
+
+
+Dealing with request. 
+
+The path to file is passed in request with tag \textquotesingle{}pth\textquotesingle{}. Timestamp column has tag \textquotesingle{}ts\textquotesingle{}.
+
+Validate suplied parameters
+
+Holds csv, sorted by \hyperlink{agrlib__v1_8h_af68635331d12bfd02f30d9b4be320cfa}{agregate()} Sorted csv is a collection of pointers in rigth order, the header is included
+
+Holds all errors we will find, to include in response Sorted succesfuly ? go for database. Note that first we perfom quering, and only then responsing
+
+Database workflow done in usual fasion
+
+Logic \+: try to create table(even if exists) ---$>$ if exists \+: skip, else \+: create table with eather suplied name or name formed from file path
+
+When done, we will form and send our queries with csv data
+
+Holds response H\+T\+ML table as text
+
+Forming response
+
+For test purposes
+
+As we are here this means everything is ok, no errors met and we are ready to finally response with success
+
+everything is ok
+
+An error in forming H\+T\+ML table occured. We are going to inform user about it Note, when changing error text -\/ change it\textquotesingle{}s length
+
+An error in querring database occured. It can be what ever, other includes in error report will try to tell more on this
+
+An error in creating table occured.
+
+An error in sorting csv occured\+: Generaly it heppens due to mistakes in 1) creating csv 2) mistakes with timestamp length and column
+
+An error in sorting csv occured\+: Generaly it heppens due to mistakes in 1) creating csv 2) mistakes with timestamp length and column
+
+We dont get here if everything is OK \mbox{\Hypertarget{core_8c_a9f53c2262b7acaa2b5a1e1d2463f14f1}\label{core_8c_a9f53c2262b7acaa2b5a1e1d2463f14f1}} 
+\index{core.\+c@{core.\+c}!setup\+\_\+conn@{setup\+\_\+conn}}
+\index{setup\+\_\+conn@{setup\+\_\+conn}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{setup\+\_\+conn()}{setup\_conn()}}
+{\footnotesize\ttfamily int setup\+\_\+conn (\begin{DoxyParamCaption}\item[{struct kore\+\_\+pgsql $\ast$}]{sql }\end{DoxyParamCaption})}
+
+
+
+Sets up / opens connection with database. 
+
+Initialise data structure
+
+Try again
+
+All attempts failed 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{core_8c_a1bffe9444fb0c41cb785eef0ceb29a8d}\label{core_8c_a1bffe9444fb0c41cb785eef0ceb29a8d}} 
+\index{core.\+c@{core.\+c}!conn\+\_\+str@{conn\+\_\+str}}
+\index{conn\+\_\+str@{conn\+\_\+str}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{conn\+\_\+str}{conn\_str}}
+{\footnotesize\ttfamily char conn\+\_\+str\mbox{[}$\,$\mbox{]} = \char`\"{}host=localhost dbname=your\+\_\+database\+\_\+name user=example\+\_\+user password=example\char`\"{}}
+
+
+
+Main connection string, fill with your parametrs according to P\+G\+S\+QL connection string rules. 
+
+\mbox{\Hypertarget{core_8c_a56c55320a85231784cb14d45e6d8043a}\label{core_8c_a56c55320a85231784cb14d45e6d8043a}} 
+\index{core.\+c@{core.\+c}!error\+\_\+response\+\_\+end@{error\+\_\+response\+\_\+end}}
+\index{error\+\_\+response\+\_\+end@{error\+\_\+response\+\_\+end}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{error\+\_\+response\+\_\+end}{error\_response\_end}}
+{\footnotesize\ttfamily char error\+\_\+response\+\_\+end\mbox{[}$\,$\mbox{]} = \char`\"{}$<$/body$>$$<$/html$>$\char`\"{}}
+
+\mbox{\Hypertarget{core_8c_aba77d446d3c6b20fc708dbaa56669a8d}\label{core_8c_aba77d446d3c6b20fc708dbaa56669a8d}} 
+\index{core.\+c@{core.\+c}!error\+\_\+response\+\_\+header@{error\+\_\+response\+\_\+header}}
+\index{error\+\_\+response\+\_\+header@{error\+\_\+response\+\_\+header}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{error\+\_\+response\+\_\+header}{error\_response\_header}}
+{\footnotesize\ttfamily char error\+\_\+response\+\_\+header\mbox{[}$\,$\mbox{]} = \char`\"{}$<$!D\+O\+C\+T\+Y\+PE html$>$$<$html$>$$<$head$>$$<$meta charset=\textbackslash{}\char`\"{}utf-\/8\textbackslash{}\char`\"{}$>$$<$/head$>$$<$body$>$L\+O\+G\+:\char`\"{}}
+
+
+
+Tamplate for generated H\+T\+ML error response. 
+
+\mbox{\Hypertarget{core_8c_a6b9a9c1be87e8344b94882f91f56805b}\label{core_8c_a6b9a9c1be87e8344b94882f91f56805b}} 
+\index{core.\+c@{core.\+c}!escape\+\_\+needed@{escape\+\_\+needed}}
+\index{escape\+\_\+needed@{escape\+\_\+needed}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{escape\+\_\+needed}{escape\_needed}}
+{\footnotesize\ttfamily int escape\+\_\+needed = 1}
+
+
+
+This flag wraps query in \$\$ for escaping some characters(like quots) 
+
+\mbox{\Hypertarget{core_8c_ad25499646dfc76b1dfafbe258ea21f19}\label{core_8c_ad25499646dfc76b1dfafbe258ea21f19}} 
+\index{core.\+c@{core.\+c}!form\+\_\+name\+\_\+from\+\_\+path@{form\+\_\+name\+\_\+from\+\_\+path}}
+\index{form\+\_\+name\+\_\+from\+\_\+path@{form\+\_\+name\+\_\+from\+\_\+path}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{form\+\_\+name\+\_\+from\+\_\+path}{form\_name\_from\_path}}
+{\footnotesize\ttfamily int form\+\_\+name\+\_\+from\+\_\+path = 1}
+
+
+
+If no name was suplied to create table with and this flag is up -\/ we will get name from file. 
+
+\mbox{\Hypertarget{core_8c_a519c8e500ba2ea066c723ee28e30fa04}\label{core_8c_a519c8e500ba2ea066c723ee28e30fa04}} 
+\index{core.\+c@{core.\+c}!html\+\_\+table@{html\+\_\+table}}
+\index{html\+\_\+table@{html\+\_\+table}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{html\+\_\+table}{html\_table}}
+{\footnotesize\ttfamily char html\+\_\+table\mbox{[}$\,$\mbox{]} = \char`\"{}$<$!D\+O\+C\+T\+Y\+PE html$>$$<$html$>$$<$head$>$$<$meta charset=\textbackslash{}\char`\"{}U\+TF-\/8\textbackslash{}\char`\"{}$>$$<$style$>$table\{font-\/family\+: arial, sans-\/serif;border-\/collapse\+: collapse;width\+: 100\%;\}td, th \{border\+: 1px solid \#dddddd;text-\/align\+: left;padding\+: 8px;\}tr\+:nth-\/child(even) \{background-\/color\+: \#dddddd;\}$<$/style$>$$<$/head$>$$<$body$>$$<$h2$>$\+R\+E\+S\+U\+L\+T\+S$<$/h2$>$$<$table$>$\char`\"{}}
+
+
+
+Tamplate for generated H\+T\+ML table. 
+
+\mbox{\Hypertarget{core_8c_a88018c0aba001bc30dd2bf70c5098c02}\label{core_8c_a88018c0aba001bc30dd2bf70c5098c02}} 
+\index{core.\+c@{core.\+c}!html\+\_\+table\+\_\+end@{html\+\_\+table\+\_\+end}}
+\index{html\+\_\+table\+\_\+end@{html\+\_\+table\+\_\+end}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{html\+\_\+table\+\_\+end}{html\_table\_end}}
+{\footnotesize\ttfamily char html\+\_\+table\+\_\+end\mbox{[}$\,$\mbox{]} = \char`\"{}$<$/table$>$$<$/body$>$$<$/html$>$\char`\"{}}
+
+
+
+End of table. 
+
+\mbox{\Hypertarget{core_8c_ac6415df1e2eb068fae92d9ec1dab1702}\label{core_8c_ac6415df1e2eb068fae92d9ec1dab1702}} 
+\index{core.\+c@{core.\+c}!max\+\_\+entry\+\_\+size@{max\+\_\+entry\+\_\+size}}
+\index{max\+\_\+entry\+\_\+size@{max\+\_\+entry\+\_\+size}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{max\+\_\+entry\+\_\+size}{max\_entry\_size}}
+{\footnotesize\ttfamily char max\+\_\+entry\+\_\+size\mbox{[}$\,$\mbox{]} = \char`\"{} varchar(40) \char`\"{}}
+
+
+
+If table is new created, each entry is treated as text(varchar). Here is max size of each entry. 
+
+\mbox{\Hypertarget{core_8c_abc370adb7e2af08ae0ab13964d45d1c4}\label{core_8c_abc370adb7e2af08ae0ab13964d45d1c4}} 
+\index{core.\+c@{core.\+c}!max\+\_\+try\+\_\+conn@{max\+\_\+try\+\_\+conn}}
+\index{max\+\_\+try\+\_\+conn@{max\+\_\+try\+\_\+conn}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{max\+\_\+try\+\_\+conn}{max\_try\_conn}}
+{\footnotesize\ttfamily int max\+\_\+try\+\_\+conn = 5}
+
+
+
+Holds the number of attempts to do, when trying to access database. 
+
+\mbox{\Hypertarget{core_8c_a299efd1f0f06729d349e9c000260a4a1}\label{core_8c_a299efd1f0f06729d349e9c000260a4a1}} 
+\index{core.\+c@{core.\+c}!name\+\_\+len@{name\+\_\+len}}
+\index{name\+\_\+len@{name\+\_\+len}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{name\+\_\+len}{name\_len}}
+{\footnotesize\ttfamily int name\+\_\+len = 0}
+
+\mbox{\Hypertarget{core_8c_a4b2ae53d82dc2d82a6ba3d6488e3638f}\label{core_8c_a4b2ae53d82dc2d82a6ba3d6488e3638f}} 
+\index{core.\+c@{core.\+c}!path\+\_\+to\+\_\+csv@{path\+\_\+to\+\_\+csv}}
+\index{path\+\_\+to\+\_\+csv@{path\+\_\+to\+\_\+csv}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{path\+\_\+to\+\_\+csv}{path\_to\_csv}}
+{\footnotesize\ttfamily char$\ast$ path\+\_\+to\+\_\+csv}
+
+\mbox{\Hypertarget{core_8c_ab013af67ba953d509575c86d9e65da44}\label{core_8c_ab013af67ba953d509575c86d9e65da44}} 
+\index{core.\+c@{core.\+c}!table\+\_\+name@{table\+\_\+name}}
+\index{table\+\_\+name@{table\+\_\+name}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{table\+\_\+name}{table\_name}}
+{\footnotesize\ttfamily char$\ast$ table\+\_\+name}
+
+
+
+Table name to use if it is not created from file name(\+C\+R\+E\+A\+T\+E\+\_\+\+N\+A\+M\+E\+\_\+\+F\+R\+O\+M\+\_\+\+F\+I\+L\+E not defined) 
+
+\mbox{\Hypertarget{core_8c_a706bc0a919ca845fc1f5c8f58074e924}\label{core_8c_a706bc0a919ca845fc1f5c8f58074e924}} 
+\index{core.\+c@{core.\+c}!ts\+\_\+in\+\_\+db@{ts\+\_\+in\+\_\+db}}
+\index{ts\+\_\+in\+\_\+db@{ts\+\_\+in\+\_\+db}!core.\+c@{core.\+c}}
+\subsubsection{\texorpdfstring{ts\+\_\+in\+\_\+db}{ts\_in\_db}}
+{\footnotesize\ttfamily char ts\+\_\+in\+\_\+db\mbox{[}$\,$\mbox{]} = \char`\"{} timestamp \char`\"{}}
+
+
+
+This key is used for column with timestamp, if database is created. 
+

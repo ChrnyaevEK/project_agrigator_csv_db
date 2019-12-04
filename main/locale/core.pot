@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-04 00:10+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/core.c:314
+msgid "_Check data format or input data_"
+msgstr ""
+
+#: src/core.c:405
+msgid "_Connection failed, check connection data_"
+msgstr ""
+
+#: src/core.c:377
+msgid "_Creation failed, check your rigths_"
+msgstr ""
+
+#. ! An error in creating table occured.
+#: src/core.c:159
+msgid "_Error in creating table_"
+msgstr ""
+
+#. ! An error in sorting csv occured:
+#. ! Generaly it heppens due to mistakes in 1) creating csv 2) mistakes with timestamp length and column
+#: src/core.c:175
+msgid "_Error in parameters_"
+msgstr ""
+
+#. ! An error in querring database occured. It can be what ever, other includes in error report will try to tell more on this
+#: src/core.c:152
+msgid "_Error in querring SQL_"
+msgstr ""
+
+#. ! An error in sorting csv occured:
+#. ! Generaly it heppens due to mistakes in 1) creating csv 2) mistakes with timestamp length and column
+#: src/core.c:167
+msgid "_Error while sorting CSV(check file or parameters_"
+msgstr ""
+
+#: src/core.c:432
+msgid "_QUERING FAILED WITH LINE num."
+msgstr ""
+
+#. ! An error in forming HTML table occured. We are going to inform user about it
+#. ! Note, when changing error text - change it's length
+#: src/core.c:145
+msgid "_The response could not be created correctly_"
+msgstr ""

@@ -1,0 +1,365 @@
+\hypertarget{agrlib__v2_8h}{}\section{src/agrlib\+\_\+v2.h File Reference}
+\label{agrlib__v2_8h}\index{src/agrlib\+\_\+v2.\+h@{src/agrlib\+\_\+v2.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for agrlib\+\_\+v2.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{agrlib__v2_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{agrlib__v2_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{agrlib__v2_8h_a5ab5b9aaf3850b085ca39abf901b2751}{T\+E\+S\+T\+\_\+\+C\+A\+SE}
+\begin{DoxyCompactList}\small\item\em For testing define T\+E\+S\+T\+\_\+\+C\+A\+SE. \end{DoxyCompactList}\item 
+\#define \hyperlink{agrlib__v2_8h_abe6b865c045f3e7c6892ef4f15ff5779}{D\+O\+NE}~1
+\begin{DoxyCompactList}\small\item\em D\+O\+NE is used as success indicator. \end{DoxyCompactList}\item 
+\#define \hyperlink{agrlib__v2_8h_a8fe83ac76edc595f6b98cd4a4127aed5}{E\+R\+R\+OR}~0
+\begin{DoxyCompactList}\small\item\em E\+R\+R\+OR is used as fail indicator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{agrlib__v2_8h_a0307984afb426de0d910e5fc8eb5af27}{csv\+\_\+import} (char \hyperlink{core_8c_a4b2ae53d82dc2d82a6ba3d6488e3638f}{path\+\_\+to\+\_\+csv}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function perform import of file.\+Input value\+: path to file. Return value\+: D\+O\+NE or E\+R\+R\+OR. \end{DoxyCompactList}\item 
+int \hyperlink{agrlib__v2_8h_a7a14e18fe42a95fdce291f1ffd1be5c2}{csv\+\_\+info} (char $\ast$\hyperlink{agrlib__v1_8h_ab00f83b047d06986d6709f8ac535b192}{csv})
+\begin{DoxyCompactList}\small\item\em Function counts rows and columns, max length of line,also replace all E\+OL with N\+U\+LL. Input \+: pointer to csv in memory. Return value\+: D\+O\+NE or E\+R\+R\+OR. \end{DoxyCompactList}\item 
+int \hyperlink{agrlib__v2_8h_a605396290960b729c55527ce1168deda}{init\+\_\+memory} (size\+\_\+t len, int case\+\_\+)
+\item 
+int \hyperlink{agrlib__v2_8h_aebc31f51013d2dc2c24e280b63e35c3f}{csv\+\_\+get\+\_\+lines} (char $\ast$\hyperlink{agrlib__v1_8h_ab00f83b047d06986d6709f8ac535b192}{csv})
+\begin{DoxyCompactList}\small\item\em Function loops through file searching for line beginnings positions. Input \+: pointer to csv in memory. Return value\+: D\+O\+NE or E\+R\+R\+OR. \end{DoxyCompactList}\item 
+int \hyperlink{agrlib__v2_8h_aadd713f59dccacdf303f1eae5ff3cbbe}{csv\+\_\+get\+\_\+timestamps} (char $\ast$\hyperlink{agrlib__v1_8h_ab00f83b047d06986d6709f8ac535b192}{csv})
+\begin{DoxyCompactList}\small\item\em Function loops through file searching for timestamps positions. Input \+: pointer to csv in memory. Return value\+: D\+O\+NE or E\+R\+R\+OR. \end{DoxyCompactList}\item 
+int \hyperlink{agrlib__v2_8h_a21172191aa50a1ec76d88e728f9c69d4}{sort\+\_\+timepointers} (char $\ast$$\ast$time, char $\ast$$\ast$line)
+\begin{DoxyCompactList}\small\item\em Function sorts timestamps. Input \+: array of timestamps starts pointers and array of line beginnings. Algorithm\+: combo sorting. Return value\+: D\+O\+NE or E\+R\+R\+OR. \end{DoxyCompactList}\item 
+int \hyperlink{agrlib__v2_8h_ab91f89f6a19d310763428e1bf599f4fe}{compare\+\_\+timestamps} (char $\ast$first, char $\ast$second)
+\begin{DoxyCompactList}\small\item\em Function compares first given timespamp with second by subtraction. Return value\+: 1 for F$>$S., 2 for F$<$S., 3 for F=S or E\+R\+R\+OR. \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{agrlib__v2_8h_ad9931ba3f9b842cdf853e586e986ab50}{new\+\_\+gap} (size\+\_\+t gap)
+\begin{DoxyCompactList}\small\item\em Function generates new gap for combo sort algorithm. Input \+: old gap. Return \+: new gap. \end{DoxyCompactList}\item 
+char $\ast$$\ast$$\ast$ \hyperlink{agrlib__v2_8h_a5d809ffa3eb2e85f2e2a91b7feb39584}{agregate} (char $\ast$\hyperlink{core_8c_a4b2ae53d82dc2d82a6ba3d6488e3638f}{path\+\_\+to\+\_\+csv}, unsigned short int $\ast$timestamp\+\_\+column)
+\begin{DoxyCompactList}\small\item\em Main function, controls order of program flow and. \end{DoxyCompactList}\item 
+void \hyperlink{agrlib__v2_8h_a19ca95ef173bf8ed186fd3c4d0aede1f}{show\+\_\+hiden\+\_\+time} (char $\ast$timestamp)
+\begin{DoxyCompactList}\small\item\em Help functions -\/ in test cases may come in handy. ! S\+T\+D\+O\+UT is used. \end{DoxyCompactList}\item 
+void \hyperlink{agrlib__v2_8h_a4df9c8a3fc1c3470cdc57ecfb548fd95}{show\+\_\+hiden\+\_\+string} (char $\ast$line)
+\begin{DoxyCompactList}\small\item\em Function prints line given by pointer until E\+OL met. \end{DoxyCompactList}\item 
+void \hyperlink{agrlib__v2_8h_a93d82a5a51eb0de86f629e86dce96202}{general\+\_\+check} (int case\+\_\+)
+\begin{DoxyCompactList}\small\item\em Function perform general check by printing\+: case\{1) -\/ all sorted timestamps, case(2) -\/ all sorted csv lines. \end{DoxyCompactList}\item 
+int \hyperlink{agrlib__v2_8h_a8fd952fbab14a2eaaa9aaf96010e2aa0}{csv\+\_\+import} (char $\ast$\hyperlink{core_8c_a4b2ae53d82dc2d82a6ba3d6488e3638f}{path\+\_\+to\+\_\+csv})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{agrlib__v2_8h_a2f44b091be60ccdd664997eb163d2ff4}{sep} = \textquotesingle{},\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Defines csv separator, must be single symbol. \end{DoxyCompactList}\item 
+int \hyperlink{agrlib__v2_8h_a4409b51f47ad8c26d98b227bf26bfbd9}{end\+\_\+\+CR} = 0x0D
+\item 
+int \hyperlink{agrlib__v2_8h_abb7d175ad428e618e66b9d002a475cf2}{end\+\_\+\+LF} = 0x0A
+\begin{DoxyCompactList}\small\item\em End of line LF symbol. \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{agrlib__v2_8h_adfdc908b893f72ef73c8850671ba538f}{timestamp\+\_\+col} = 0
+\begin{DoxyCompactList}\small\item\em This parameter is user defined. It holds the timestamps column number. Note, that columns are counted from 0 \+: 0,1,2,3,4, ... ,timestamp\+\_\+col, .... n. \end{DoxyCompactList}\item 
+int \hyperlink{agrlib__v2_8h_aeed51c87c57a3eb984514da8000aeb7b}{timestamp\+\_\+len}
+\item 
+int \hyperlink{agrlib__v2_8h_a8466c885b251cd7cfa286745837b5347}{max\+\_\+try} = 5
+\begin{DoxyCompactList}\small\item\em Max number of attempts to allocate memory. \end{DoxyCompactList}\item 
+F\+I\+LE $\ast$ \hyperlink{agrlib__v2_8h_a82500a31718a0b612f28d06d2a448e04}{input\+\_\+csv}
+\begin{DoxyCompactList}\small\item\em File pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{agrlib__v2_8h_abe6b865c045f3e7c6892ef4f15ff5779}\label{agrlib__v2_8h_abe6b865c045f3e7c6892ef4f15ff5779}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!D\+O\+NE@{D\+O\+NE}}
+\index{D\+O\+NE@{D\+O\+NE}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{D\+O\+NE}{DONE}}
+{\footnotesize\ttfamily \#define D\+O\+NE~1}
+
+
+
+D\+O\+NE is used as success indicator. 
+
+\mbox{\Hypertarget{agrlib__v2_8h_a8fe83ac76edc595f6b98cd4a4127aed5}\label{agrlib__v2_8h_a8fe83ac76edc595f6b98cd4a4127aed5}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!E\+R\+R\+OR@{E\+R\+R\+OR}}
+\index{E\+R\+R\+OR@{E\+R\+R\+OR}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{E\+R\+R\+OR}{ERROR}}
+{\footnotesize\ttfamily \#define E\+R\+R\+OR~0}
+
+
+
+E\+R\+R\+OR is used as fail indicator. 
+
+\mbox{\Hypertarget{agrlib__v2_8h_a5ab5b9aaf3850b085ca39abf901b2751}\label{agrlib__v2_8h_a5ab5b9aaf3850b085ca39abf901b2751}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!T\+E\+S\+T\+\_\+\+C\+A\+SE@{T\+E\+S\+T\+\_\+\+C\+A\+SE}}
+\index{T\+E\+S\+T\+\_\+\+C\+A\+SE@{T\+E\+S\+T\+\_\+\+C\+A\+SE}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{T\+E\+S\+T\+\_\+\+C\+A\+SE}{TEST\_CASE}}
+{\footnotesize\ttfamily \#define T\+E\+S\+T\+\_\+\+C\+A\+SE}
+
+
+
+For testing define T\+E\+S\+T\+\_\+\+C\+A\+SE. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{agrlib__v2_8h_a5d809ffa3eb2e85f2e2a91b7feb39584}\label{agrlib__v2_8h_a5d809ffa3eb2e85f2e2a91b7feb39584}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!agregate@{agregate}}
+\index{agregate@{agregate}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{agregate()}{agregate()}}
+{\footnotesize\ttfamily char $\ast$$\ast$$\ast$ agregate (\begin{DoxyParamCaption}\item[{char $\ast$}]{path\+\_\+to\+\_\+csv,  }\item[{unsigned short int $\ast$}]{timestamp\+\_\+column }\end{DoxyParamCaption})}
+
+
+
+Main function, controls order of program flow and. 
+
+This is main logic function. Call this with path to perform all. Program flow \+: csv\+\_\+import ---$>$ csv\+\_\+info --$>$ init\+\_\+memory ---$>$ csv\+\_\+get\+\_\+lines ---$>$ csv\+\_\+get\+\_\+timestamps ---$>$ sort(compare) E\+ND file import ---$>$ general information --$>$ memory initialization ---$>$ lines search ---$>$ timestamps search ---$>$ sorting E\+ND Information about timestamp column is taken from user. \mbox{\Hypertarget{agrlib__v2_8h_ab91f89f6a19d310763428e1bf599f4fe}\label{agrlib__v2_8h_ab91f89f6a19d310763428e1bf599f4fe}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!compare\+\_\+timestamps@{compare\+\_\+timestamps}}
+\index{compare\+\_\+timestamps@{compare\+\_\+timestamps}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{compare\+\_\+timestamps()}{compare\_timestamps()}}
+{\footnotesize\ttfamily int compare\+\_\+timestamps (\begin{DoxyParamCaption}\item[{char $\ast$}]{first,  }\item[{char $\ast$}]{second }\end{DoxyParamCaption})}
+
+
+
+Function compares first given timespamp with second by subtraction. Return value\+: 1 for F$>$S., 2 for F$<$S., 3 for F=S or E\+R\+R\+OR. 
+
+Comparison is done by subtraction and comparison with zero, so it is important to follow timestamps format Return value 1 if first(passed value) $>$ second (passed value) 2 if first $<$ second 3 if first = second In T\+E\+S\+T\+\_\+\+C\+A\+SE some additional information is shown
+
+Comparing we loop through timestamps subtracting values Return values reflects relations between First and Second values \mbox{\Hypertarget{agrlib__v2_8h_aebc31f51013d2dc2c24e280b63e35c3f}\label{agrlib__v2_8h_aebc31f51013d2dc2c24e280b63e35c3f}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!csv\+\_\+get\+\_\+lines@{csv\+\_\+get\+\_\+lines}}
+\index{csv\+\_\+get\+\_\+lines@{csv\+\_\+get\+\_\+lines}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{csv\+\_\+get\+\_\+lines()}{csv\_get\_lines()}}
+{\footnotesize\ttfamily int csv\+\_\+get\+\_\+lines (\begin{DoxyParamCaption}\item[{char $\ast$}]{csv }\end{DoxyParamCaption})}
+
+
+
+Function loops through file searching for line beginnings positions. Input \+: pointer to csv in memory. Return value\+: D\+O\+NE or E\+R\+R\+OR. 
+
+Getting lines beginnings starts with memory allocation. We need memory for pointers array with length equal to the number of rows
+
+In case of fail we will try up try max try number
+
+Then we search for position of each first not null symbol and save reference on it \mbox{\Hypertarget{agrlib__v2_8h_aadd713f59dccacdf303f1eae5ff3cbbe}\label{agrlib__v2_8h_aadd713f59dccacdf303f1eae5ff3cbbe}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!csv\+\_\+get\+\_\+timestamps@{csv\+\_\+get\+\_\+timestamps}}
+\index{csv\+\_\+get\+\_\+timestamps@{csv\+\_\+get\+\_\+timestamps}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{csv\+\_\+get\+\_\+timestamps()}{csv\_get\_timestamps()}}
+{\footnotesize\ttfamily int csv\+\_\+get\+\_\+timestamps (\begin{DoxyParamCaption}\item[{char $\ast$}]{csv }\end{DoxyParamCaption})}
+
+
+
+Function loops through file searching for timestamps positions. Input \+: pointer to csv in memory. Return value\+: D\+O\+NE or E\+R\+R\+OR. 
+
+Getting timestamps pointers for further comparison start with memory a allocation. We try to allocate memory as well several times
+
+To indicate if current position in file contains timestamp or not we will count columns If file contains an error and we exceed the number of columns -\/work stops.
+
+As timestamp is found and its first character address is stored -\/ we do not expect timestamps in this line any more
+
+All timestamps should be the same length, which is never exceeded during timestamps comparison
+
+Header does not take part in counting, so first -\/ we must pass it
+
+To avoid errors in column number we indicate step from meaningful part to meaning less If at this moments we did not met enough separators -\/ error
+
+Each symbol is checked for separator or E\+OL
+
+E\+OL means that we are in useless part
+
+If timestamp is located at the end of line -\/ its length is counted here.
+
+As well at the end of line we check for number of columns to be the same as counted in header
+
+Another error is reaching end of line and without reaching timestamp column.
+
+Indication of non header line is \+: timestamp length counting has started, but header\+\_\+passed is still false .
+
+Next error is different length of timestamps, which means that error if no timestamp found. If something else is in column of ts, but of the same length -\/ it ok, as well it will be sorted.
+
+Length of timestamp is as well controlled/counted when separator is met.
+
+Finally -\/ an address of first symbol in timestamps columns is taken. \mbox{\Hypertarget{agrlib__v2_8h_a0307984afb426de0d910e5fc8eb5af27}\label{agrlib__v2_8h_a0307984afb426de0d910e5fc8eb5af27}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!csv\+\_\+import@{csv\+\_\+import}}
+\index{csv\+\_\+import@{csv\+\_\+import}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{csv\+\_\+import()}{csv\_import()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int csv\+\_\+import (\begin{DoxyParamCaption}\item[{char}]{path\+\_\+to\+\_\+csv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function perform import of file.\+Input value\+: path to file. Return value\+: D\+O\+NE or E\+R\+R\+OR. 
+
+\mbox{\Hypertarget{agrlib__v2_8h_a8fd952fbab14a2eaaa9aaf96010e2aa0}\label{agrlib__v2_8h_a8fd952fbab14a2eaaa9aaf96010e2aa0}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!csv\+\_\+import@{csv\+\_\+import}}
+\index{csv\+\_\+import@{csv\+\_\+import}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{csv\+\_\+import()}{csv\_import()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int csv\+\_\+import (\begin{DoxyParamCaption}\item[{char $\ast$}]{path\+\_\+to\+\_\+csv }\end{DoxyParamCaption})}
+
+Import starts with reading file. An E\+R\+R\+OR returned in case of fail.
+
+The first thing after file was opened -\/ get its size. Then we allocate memory. All at once.
+
+To free memory lets save the original reference
+
+If we have memory -\/ read whole file to it and then close file
+
+If at some stage an error occurs -\/ E\+R\+R\+OR is returned end the program generaly ends. Possible errors\+: read less than file size(import error), not enough memory to hold file(mem error), error in opening file. These are end cases and E\+R\+R\+OR is returned. However we will consider an empty file as already sorted and return D\+O\+NE\mbox{\Hypertarget{agrlib__v2_8h_a7a14e18fe42a95fdce291f1ffd1be5c2}\label{agrlib__v2_8h_a7a14e18fe42a95fdce291f1ffd1be5c2}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!csv\+\_\+info@{csv\+\_\+info}}
+\index{csv\+\_\+info@{csv\+\_\+info}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{csv\+\_\+info()}{csv\_info()}}
+{\footnotesize\ttfamily int csv\+\_\+info (\begin{DoxyParamCaption}\item[{char $\ast$}]{csv }\end{DoxyParamCaption})}
+
+
+
+Function counts rows and columns, max length of line,also replace all E\+OL with N\+U\+LL. Input \+: pointer to csv in memory. Return value\+: D\+O\+NE or E\+R\+R\+OR. 
+
+First,lets count columns. For this we use first line, as it is considered to be header
+
+So, each character is compared with separator or E\+OL
+
+Each found separator increase column number
+
+As the E\+OL reached -\/ we increase column number again \+: ... , ... , ... has 3 col, but only 2 separators
+
+Here we will also check if file contains more than one line.
+
+If only one line found -\/ we return, as it has no reason to continue sorting
+
+Next -\/ count meaningful lines and maximum line length. From here line becomes sequence of characters delimited by \textquotesingle{}\textbackslash{}0\textquotesingle{} (max\+\_\+len -\/ maximum length, cur\+\_\+len -\/ current length)
+
+Replacing all E\+OL with \textquotesingle{}\textbackslash{}0\textquotesingle{} will make searching easier
+
+In test case, information about file will be printed \mbox{\Hypertarget{agrlib__v2_8h_a93d82a5a51eb0de86f629e86dce96202}\label{agrlib__v2_8h_a93d82a5a51eb0de86f629e86dce96202}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!general\+\_\+check@{general\+\_\+check}}
+\index{general\+\_\+check@{general\+\_\+check}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{general\+\_\+check()}{general\_check()}}
+{\footnotesize\ttfamily void general\+\_\+check (\begin{DoxyParamCaption}\item[{int}]{case\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Function perform general check by printing\+: case\{1) -\/ all sorted timestamps, case(2) -\/ all sorted csv lines. 
+
+Shows all timestamps(1), saved by pointers or lines(2), saved by pointers \mbox{\Hypertarget{agrlib__v2_8h_a605396290960b729c55527ce1168deda}\label{agrlib__v2_8h_a605396290960b729c55527ce1168deda}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!init\+\_\+memory@{init\+\_\+memory}}
+\index{init\+\_\+memory@{init\+\_\+memory}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+memory()}{init\_memory()}}
+{\footnotesize\ttfamily int init\+\_\+memory (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len,  }\item[{int}]{case\+\_\+ }\end{DoxyParamCaption})}
+
+Function contains main memory initialization. Input\+: size to initialize pointer with(main case -\/ number of rows) and cases 1-\/2-\/3, which pointer to initialize with memory. Return value\+: D\+O\+NE or E\+R\+R\+OR For better structure some memory initialization is located here. Global pointers timestamp and lines getting memory from here. Input\+: len -\/ size of memory to allocate, case\+\_\+ -\/ for which pointer(1,2,3) \mbox{\Hypertarget{agrlib__v2_8h_ad9931ba3f9b842cdf853e586e986ab50}\label{agrlib__v2_8h_ad9931ba3f9b842cdf853e586e986ab50}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!new\+\_\+gap@{new\+\_\+gap}}
+\index{new\+\_\+gap@{new\+\_\+gap}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{new\+\_\+gap()}{new\_gap()}}
+{\footnotesize\ttfamily size\+\_\+t new\+\_\+gap (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{gap }\end{DoxyParamCaption})}
+
+
+
+Function generates new gap for combo sort algorithm. Input \+: old gap. Return \+: new gap. 
+
+New gap for sorting is formed from rows number and after first loop of algorithm from last gap. Conditions of gap formation could be changed \mbox{\Hypertarget{agrlib__v2_8h_a4df9c8a3fc1c3470cdc57ecfb548fd95}\label{agrlib__v2_8h_a4df9c8a3fc1c3470cdc57ecfb548fd95}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!show\+\_\+hiden\+\_\+string@{show\+\_\+hiden\+\_\+string}}
+\index{show\+\_\+hiden\+\_\+string@{show\+\_\+hiden\+\_\+string}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{show\+\_\+hiden\+\_\+string()}{show\_hiden\_string()}}
+{\footnotesize\ttfamily void show\+\_\+hiden\+\_\+string (\begin{DoxyParamCaption}\item[{char $\ast$}]{line }\end{DoxyParamCaption})}
+
+
+
+Function prints line given by pointer until E\+OL met. 
+
+Helpful when testing. Show line by its pointer \mbox{\Hypertarget{agrlib__v2_8h_a19ca95ef173bf8ed186fd3c4d0aede1f}\label{agrlib__v2_8h_a19ca95ef173bf8ed186fd3c4d0aede1f}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!show\+\_\+hiden\+\_\+time@{show\+\_\+hiden\+\_\+time}}
+\index{show\+\_\+hiden\+\_\+time@{show\+\_\+hiden\+\_\+time}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{show\+\_\+hiden\+\_\+time()}{show\_hiden\_time()}}
+{\footnotesize\ttfamily void show\+\_\+hiden\+\_\+time (\begin{DoxyParamCaption}\item[{char $\ast$}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Help functions -\/ in test cases may come in handy. ! S\+T\+D\+O\+UT is used. 
+
+Function prints timestamp, given by pointer, of length timestamp\+\_\+len Helpful when testing. Show timestamps by pointer \mbox{\Hypertarget{agrlib__v2_8h_a21172191aa50a1ec76d88e728f9c69d4}\label{agrlib__v2_8h_a21172191aa50a1ec76d88e728f9c69d4}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!sort\+\_\+timepointers@{sort\+\_\+timepointers}}
+\index{sort\+\_\+timepointers@{sort\+\_\+timepointers}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{sort\+\_\+timepointers()}{sort\_timepointers()}}
+{\footnotesize\ttfamily int sort\+\_\+timepointers (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{time,  }\item[{char $\ast$$\ast$}]{line }\end{DoxyParamCaption})}
+
+
+
+Function sorts timestamps. Input \+: array of timestamps starts pointers and array of line beginnings. Algorithm\+: combo sorting. Return value\+: D\+O\+NE or E\+R\+R\+OR. 
+
+Algorithm is based on bubble sort. The only difference is in shrinking gap between two compared values. At last stages it becomes pure bubble sort.
+
+Before comparison we would check if it worth to be done -\/ if csv has only 2 rows it has no meaning.
+
+In other case, first thing to do -\/ step over header.
+
+Then define some temporary holders for compared objects We compare timestamps but the line order gets changed too
+
+Sorting loop starts with getting new gap
+
+Then we compare two timestamps with compare\+\_\+timestamps function. IF Y\+OU N\+E\+ED TO C\+H\+A\+N\+GE O\+R\+D\+ER -\/ S\+ET 2 I\+N\+S\+T\+E\+AD OF 1 IN IF C\+O\+N\+D\+I\+T\+I\+ON If the order is ok, go on, else -\/ swap the pointers 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{agrlib__v2_8h_a4409b51f47ad8c26d98b227bf26bfbd9}\label{agrlib__v2_8h_a4409b51f47ad8c26d98b227bf26bfbd9}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!end\+\_\+\+CR@{end\+\_\+\+CR}}
+\index{end\+\_\+\+CR@{end\+\_\+\+CR}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{end\+\_\+\+CR}{end\_CR}}
+{\footnotesize\ttfamily int end\+\_\+\+CR = 0x0D}
+
+To handle different OS dependent E\+OL, E\+OL symbols defined End of line CR symbol \mbox{\Hypertarget{agrlib__v2_8h_abb7d175ad428e618e66b9d002a475cf2}\label{agrlib__v2_8h_abb7d175ad428e618e66b9d002a475cf2}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!end\+\_\+\+LF@{end\+\_\+\+LF}}
+\index{end\+\_\+\+LF@{end\+\_\+\+LF}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{end\+\_\+\+LF}{end\_LF}}
+{\footnotesize\ttfamily int end\+\_\+\+LF = 0x0A}
+
+
+
+End of line LF symbol. 
+
+\mbox{\Hypertarget{agrlib__v2_8h_a82500a31718a0b612f28d06d2a448e04}\label{agrlib__v2_8h_a82500a31718a0b612f28d06d2a448e04}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!input\+\_\+csv@{input\+\_\+csv}}
+\index{input\+\_\+csv@{input\+\_\+csv}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{input\+\_\+csv}{input\_csv}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ input\+\_\+csv}
+
+
+
+File pointer. 
+
+\mbox{\Hypertarget{agrlib__v2_8h_a8466c885b251cd7cfa286745837b5347}\label{agrlib__v2_8h_a8466c885b251cd7cfa286745837b5347}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!max\+\_\+try@{max\+\_\+try}}
+\index{max\+\_\+try@{max\+\_\+try}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{max\+\_\+try}{max\_try}}
+{\footnotesize\ttfamily int max\+\_\+try = 5}
+
+
+
+Max number of attempts to allocate memory. 
+
+\mbox{\Hypertarget{agrlib__v2_8h_a2f44b091be60ccdd664997eb163d2ff4}\label{agrlib__v2_8h_a2f44b091be60ccdd664997eb163d2ff4}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!sep@{sep}}
+\index{sep@{sep}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{sep}{sep}}
+{\footnotesize\ttfamily char sep = \textquotesingle{},\textquotesingle{}}
+
+
+
+Defines csv separator, must be single symbol. 
+
+General \+: first meaningfull line is header for table Empty lines are allowed \mbox{\Hypertarget{agrlib__v2_8h_adfdc908b893f72ef73c8850671ba538f}\label{agrlib__v2_8h_adfdc908b893f72ef73c8850671ba538f}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!timestamp\+\_\+col@{timestamp\+\_\+col}}
+\index{timestamp\+\_\+col@{timestamp\+\_\+col}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{timestamp\+\_\+col}{timestamp\_col}}
+{\footnotesize\ttfamily size\+\_\+t timestamp\+\_\+col = 0}
+
+
+
+This parameter is user defined. It holds the timestamps column number. Note, that columns are counted from 0 \+: 0,1,2,3,4, ... ,timestamp\+\_\+col, .... n. 
+
+\mbox{\Hypertarget{agrlib__v2_8h_aeed51c87c57a3eb984514da8000aeb7b}\label{agrlib__v2_8h_aeed51c87c57a3eb984514da8000aeb7b}} 
+\index{agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}!timestamp\+\_\+len@{timestamp\+\_\+len}}
+\index{timestamp\+\_\+len@{timestamp\+\_\+len}!agrlib\+\_\+v2.\+h@{agrlib\+\_\+v2.\+h}}
+\subsubsection{\texorpdfstring{timestamp\+\_\+len}{timestamp\_len}}
+{\footnotesize\ttfamily int timestamp\+\_\+len}
+
+Program accepts all ,constant length, timestamps which are following the I\+SO 8601 (\href{https://en.wikipedia.org/wiki/ISO_8601}{\tt https\+://en.\+wikipedia.\+org/wiki/\+I\+S\+O\+\_\+8601}). Length is counted automatically (all symb. included) 

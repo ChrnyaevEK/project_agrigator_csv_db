@@ -1,0 +1,56 @@
+\subsection*{Timescaledb provides importing csv file, sorting by timestamp (fresh data goes first) and writing sorted data to database along with response by H\+T\+ML table of sorted data.}
+
+Author\+: {\bfseries Cherniaev Egor} \# To perfom all functions properly, user should have following informations
+
+
+\begin{DoxyEnumerate}
+\item Path to csv file
+\item Number of column were timestamp is presented
+\item Database connection data(\href{https://www.postgresql.org/docs/10/libpq-connect.html}{\tt {\ttfamily connetion string}}). Example {\ttfamily \char`\"{}host=localhost dbname=your\+\_\+database user=your\+\_\+user password=your\+\_\+password\char`\"{}}. Only this information is used to connect database.
+\item Table name
+\end{DoxyEnumerate}
+
+After data has correctly been supplied, work begins. In other cases, an error occurs and error description is returned (more on that later).
+
+\subsection*{Requirements (for server)}
+
+
+\begin{DoxyItemize}
+\item \href{https://kore.io/}{\tt Kore.\+io framework}
+\item \href{https://www.postgresql.org/}{\tt Postgresql}
+\end{DoxyItemize}
+
+\subsection*{How to use?}
+
+To {\bfseries run kore application} use {\ttfamily kodev clean \&\& kodev build \&\& kodev run} inside of main directory
+
+Then, all you need is to collect all needed information and then perform G\+ET H\+T\+TP request.
+
+{\bfseries Collect \+:} path/to/file.\+csv, my\+\_\+column\+\_\+with\+\_\+timestamp, my\+\_\+table\+\_\+name.
+
+{\bfseries Do \+:}{\ttfamily \href{http://host_server:port/?pth=path%2Fto%2Ffile.csv&ts=my_column_with_timestamp&tbl=my_table_name}{\tt http\+://host\+\_\+server\+:port/?pth=path\%2\+Fto\%2\+Ffile.\+csv\&ts=my\+\_\+column\+\_\+with\+\_\+timestamp\&tbl=my\+\_\+table\+\_\+name}}
+
+Request should contain following query {\bfseries parameters}\+:
+\begin{DoxyItemize}
+\item {\bfseries pth} -\/ path to file to perform sorting on,file should exist
+\item {\bfseries ts} -\/ timestamp column number, wich is used to identify timestamp({\bfseries column are counted from 0})
+\item {\bfseries tbl} -\/ table name.
+\end{DoxyItemize}
+
+All with U\+RL encoding. If the table doesn\textquotesingle{}t exist -\/ {\itshape it will be created} with the name you have used. After the request was received, a sorting process begins. In case of fail, an error report is returned and the user may try to change some supplied information. General errors are described below. In this version it is impossible to change the database connection string without code changing or to change timestamp format. All types of timestamp are available. The only restriction is-\/ they should follow \href{https://en.wikipedia.org/wiki/ISO_8601}{\tt I\+SO 8601} to perform sorting correctly. If the file is \char`\"{}broken\char`\"{}, some unexpected errors may occur.
+
+\subsection*{General activity description}
+
+The file gets loaded and timestamps are found. Then goes sorting. Sorting uses \href{https://en.wikipedia.org/wiki/Comb_sort}{\tt the combo sort algorithm}. After sorting, timestamps are ordered this way\+: {\bfseries fresh data first} (before 2001 2004 1900 2017 ---$>$ after 2017 2004 2001 1900). As it has been finished, database query is built and performed. In case of success, the H\+T\+ML table is built and the program will send it as the response.
+
+\subsection*{Possible errors (errors explanation)}
+
+{\ttfamily \+\_\+\+The response could not be created correctly\+\_\+} \+: Means that an internal error happened. Try again or check csv file you are working with.
+
+{\ttfamily \+\_\+\+Error in querying S\+Q\+L\+\_\+} \+: Means that connection to database for some reasons was not accepted. Check connection string or your rights related to this database
+
+{\ttfamily \+\_\+\+Error in creating table\+\_\+} \+: Table from file could not be created(header in file or data in file are not acceptable for database)
+
+{\ttfamily \+\_\+\+Error while sorting C\+S\+V(check file or parameters)\+\_\+}\+: The most common and possible error. Means that file contains error in format or that you have entered wrong timestamp column number. What is considered as error? First of all -\/ if file does not exist. Then -\/ timestamps have different length, lines have different number of columns(it does not match header). \char`\"{}\+Broken files\char`\"{} this cause error too.
+
+{\ttfamily \+\_\+\+Error in parameters\+\_\+} \+: Wrong identifiers used(pth--$>$path--$>$error) and/or data does not fit filter(e.\+i. ts-\/timestamp column number-\/ contains anything else but decimal number). Some additional info could be returned, to expand error. 

@@ -1,0 +1,6 @@
+*.o
+.flavor
+.objs
+agregator_main.so
+assets.h
+cert
